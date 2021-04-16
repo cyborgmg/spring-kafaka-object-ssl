@@ -1,0 +1,3 @@
+producer/target/
+consumer/target/
+gradle.properties
