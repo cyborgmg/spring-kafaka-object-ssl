@@ -1,1 +1,8 @@
-
+spring:
+  cloud:
+    stream:
+      bootstrap-servers: kafka-ssl:9093
+      kafka-truststore-directory: /home/cyborg/java/Workspaces/cursos-workspace/kafka/spring-kafaka-object-ssl/kafka.truststore.jks
+      kafka-truststore-password: 123456
+      kafka-keystore-directory: /home/cyborg/java/Workspaces/cursos-workspace/kafka/spring-kafaka-object-ssl/client.keystore.jks
+      kafka-keystore-password: 123456

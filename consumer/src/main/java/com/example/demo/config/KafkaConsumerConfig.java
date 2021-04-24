@@ -8,6 +8,7 @@ import org.apache.kafka.clients.CommonClientConfigs;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.config.SslConfigs;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
@@ -25,15 +26,20 @@ import java.util.Map;
 @EnableKafka
 public class KafkaConsumerConfig {
 
-    private String bootstrapAddress=" kafka-ssl:9093";
+    @Value("${spring.cloud.stream.bootstrap-servers}")
+    private String bootstrapAddress;
 
-    private String kafkaTruststoreDirectory="/home/cyborg/java/Workspaces/cursos-workspace/kafka/spring-kafaka-object-ssl/kafka.truststore.jks";
+    @Value("${spring.cloud.stream.kafka-truststore-directory}")
+    private String kafkaTruststoreDirectory;
 
-    private String kafkaTruststorePassword="123456";
+    @Value("${spring.cloud.stream.kafka-truststore-password}")
+    private String kafkaTruststorePassword;
 
-    private String kafkaKeystoreDirectory="/home/cyborg/java/Workspaces/cursos-workspace/kafka/spring-kafaka-object-ssl/client.keystore.jks";
+    @Value("${spring.cloud.stream.kafka-keystore-directory}")
+    private String kafkaKeystoreDirectory;
 
-    private String kafkaKeystorePassword="123456";
+    @Value("${spring.cloud.stream.kafka-keystore-password}")
+    private String kafkaKeystorePassword;
 
     public Map<String, Object> consumerConfigs() {
         Map<String, Object> props = new HashMap<>();
