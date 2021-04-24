@@ -19,10 +19,8 @@ class DemoApplicationTests {
 	@Autowired
 	private KafkaTemplate<String, FooObject> kafkaTemplateFooObject;
 
-
 	@Autowired
 	private KafkaTemplate<String, List<FooObject>> kafkaTemplateListFooObject;
-
 
 	@Test
 	void sendFooObjectListMessage() {
