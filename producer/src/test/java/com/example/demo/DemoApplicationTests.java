@@ -4,6 +4,7 @@ import com.example.demo.config.KafkaProducerConfig;
 import com.example.demo.model.FooObject;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.test.context.ContextConfiguration;
@@ -15,6 +16,12 @@ import java.util.UUID;
 @SpringBootTest
 @ContextConfiguration(classes = KafkaProducerConfig.class)
 class DemoApplicationTests {
+
+	@Value("${spring.cloud.stream.bindings.topic-list-foo-object.destination}")
+	private String fooTopicListFooObject;
+
+	@Value("${spring.cloud.stream.bindings.topic-foo-object.destination}")
+	private String fooTopicFooObject;
 
 	@Autowired
 	private KafkaTemplate<String, FooObject> kafkaTemplateFooObject;
@@ -36,7 +43,7 @@ class DemoApplicationTests {
 		list.add(p1);
 		list.add(p2);
 
-		kafkaTemplateListFooObject.send("fooTopicListFooObject",UUID.randomUUID().toString(),list);
+		kafkaTemplateListFooObject.send(fooTopicListFooObject,UUID.randomUUID().toString(),list);
 	}
 
 	@Test
@@ -45,7 +52,7 @@ class DemoApplicationTests {
 		p.setName("name 1");
 		p.setType("Hi 1");
 
-		kafkaTemplateFooObject.send("fooTopicFooObject",UUID.randomUUID().toString(),p);
+		kafkaTemplateFooObject.send(fooTopicFooObject,UUID.randomUUID().toString(),p);
 	}
 
 }

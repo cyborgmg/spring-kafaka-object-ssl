@@ -6,4 +6,10 @@ spring:
       kafka-truststore-password: 123456
       kafka-keystore-directory: /home/cyborg/java/Workspaces/cursos-workspace/kafka/spring-kafaka-object-ssl/client.keystore.jks
       kafka-keystore-password: 123456
-
+      bindings:
+        topic-list-foo-object:
+          destination: foo-topic-list-foo-object
+          contentType: application/json
+        topic-foo-object:
+          destination: foo-topic-foo-object
+          contentType: application/json
